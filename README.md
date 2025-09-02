@@ -1,52 +1,52 @@
 # Tetris Demo
 
-A simple, web-based Tetris game built with Python and Flask.
+Um jogo de Tetris simples, baseado na web, construído com Python e Flask.
 
-## Features
+## Funcionalidades
 
-*   Classic Tetris gameplay
-*   Score tracking
-*   Game over detection
-*   Simple and clean web interface
+*   Jogabilidade clássica de Tetris
+*   Contagem de pontuação
+*   Detecção de fim de jogo
+*   Interface web simples e limpa
 
-## Getting Started
+## Começando
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+Estas instruções permitirão que você obtenha uma cópia do projeto em execução em sua máquina local para fins de desenvolvimento e teste.
 
-### Prerequisites
+### Pré-requisitos
 
 *   Python 3
-*   pip (Python package installer)
+*   pip (instalador de pacotes Python)
 
-### Installation
+### Instalação
 
-1.  Clone the repo
+1.  Clone o repositório
     ```sh
     git clone https://github.com/gbassan-br/tetris-demo.git
     ```
-2.  Create and activate a virtual environment
+2.  Crie e ative um ambiente virtual
     ```sh
     python3 -m venv venv
     source venv/bin/activate
     ```
-3.  Install Python packages
+3.  Instale os pacotes Python
     ```sh
     pip install Flask
     ```
 
-## Usage
+## Uso
 
-Run the Flask application:
+Execute a aplicação Flask:
 ```sh
 python app.py
 ```
-Open your web browser and navigate to `http://localhost:8080`.
+Abra seu navegador e navegue para `http://localhost:8080`.
 
-## Running the tests
+## Executando os testes
 
-This project does not include an automated test suite. Manual testing can be performed by running the application and playing the game.
+Este projeto não inclui uma suíte de testes automatizada. O teste manual pode ser realizado executando a aplicação e jogando o jogo.
 
-## Built With
+## Construído com
 
-*   [Flask](https://flask.palletsprojects.com/) - The web framework used
+*   [Flask](https://flask.palletsprojects.com/) - O framework web utilizado
 *   HTML, CSS, JavaScript - Frontend
