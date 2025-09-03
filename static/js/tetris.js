@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const context = canvas.getContext('2d');
     const scoreElement = document.getElementById('score');
     const startButton = document.getElementById('start-button');
+    const pauseButton = document.getElementById('pause-button');
 
     const COLS = 10;
     const ROWS = 20;
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let board = [];
     let score = 0;
     let gameOver = false;
+    let isPaused = false;
 
     function drawBoard() {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -23,6 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     context.strokeRect(c * BLOCK_SIZE, r * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
                 }
             }
+        }
+
+        if (isPaused) {
+            context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = 'white';
+            context.font = '30px Arial';
+            context.textAlign = 'center';
+            context.fillText('Paused', canvas.width / 2, canvas.height / 2);
         }
     }
 
@@ -44,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function move(direction) {
-        if (gameOver) return;
+        if (gameOver || isPaused) return;
         const response = await fetch('/move', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -73,9 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startButton.addEventListener('click', startGame);
 
+    pauseButton.addEventListener('click', () => {
+        isPaused = !isPaused;
+        pauseButton.textContent = isPaused ? 'Resume' : 'Pause';
+        drawBoard();
+    });
+
     // Game loop
     setInterval(async () => {
-        if (!gameOver) {
+        if (!gameOver && !isPaused) {
             await move('down');
         }
     }, 1000);
